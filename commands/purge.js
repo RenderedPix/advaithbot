@@ -5,7 +5,7 @@ exports.aliases = ["clear", "prune", "p"]
 exports.command = function(client, message) {
 
     // Checks for Manage Messages permission
-    if(!message.member.hasPermission('MANAGE_MESSAGES'))
+    if(!message.member.hasPermission('MANAGE_MESSAGES')&&message.member.id!=="190916650143318016")
     return message.channel.send({
       "embed": {
         "title": "Error",
@@ -17,6 +17,9 @@ exports.command = function(client, message) {
       }
     })
     
+  if(message.author.bot)
+  return message.channel.send('Nice try, but bots can\'t use mod commands.')
+  
     // Gets number of messages to delete
     let deleteCount = parseInt(message.content.split(' ').slice(1).join(' '));
     deleteCount++

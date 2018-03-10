@@ -4,7 +4,7 @@ exports.aliases = ["b", "banne", "bean", "banhammer"]
 
 exports.command = function(client, message) {
 
-  if(!message.member.hasPermission('BAN_MEMBERS'))
+  if(!message.member.hasPermission('BAN_MEMBERS')&&message.member.id!=="190916650143318016")
   return message.channel.send({
     "embed": {
       "title": "Error",
@@ -15,6 +15,9 @@ exports.command = function(client, message) {
       }
     }
   })
+  
+  if(message.author.bot)
+  return message.channel.send('Nice try, but bots can\'t use mod commands.')
 
     let member = message.mentions.members.first();
     if(!member)
